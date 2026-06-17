@@ -4,7 +4,9 @@ A fast-paced 3D first-person shooter where players battle through increasingly d
 
 i will add more  
 
-> **🎮 Play the game:** *(Add your web demo or download link here)*
+game play video https://youtu.be/ixqJS-LrBXw
+
+> **🎮 Play the game: https://jonwill12.itch.io/hackclub3dgame
 
 
 ### Play on Desktop
