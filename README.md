@@ -1,37 +1,65 @@
-3D Hackclub Game
-A first-person shooter where you survive against enemies that hunt you down across an open arena.
+# Escape Protocol
 
-🎮 Play the Demo
-Play on itch.io → https://jonwill12.itch.io/hackclub3dgame
+A fast-paced 3D first-person shooter where players battle through increasingly difficult levels, unlocking new challenges as they progress.
 
-Quick Start
+![Gameplay Screenshot](images/gameplay.png)
 
-Go to the itch.io page
-Download the zip
-Extract and run hackclub3dgame.exe
+> **🎮 Play the game:** *(Add your web demo or download link here)*
 
 
-Features
+### Play on Desktop
 
-First-person movement with sprint, crouch, and jump
-Shoot enemies with a full weapon system including pistol, rifle, shotgun, sniper, and rocket launcher
-Enemies that chase and attack you using pathfinding
-Player health system with HUD health bar
-Enemies take damage and die when shot
-Animated enemy characters using Mixamo animations
+1. Download the latest release.
+2. Extract the files.
+3. Run `godot 3d fps.exe`.
 
+---
 
-How It Works
-The game uses a state machine based character controller for smooth first-person movement with separate states for idle, walking, running, crouching, jumping, and being in the air. Enemy AI uses Godot's NavigationAgent3D to path toward the player across a baked NavMesh, and deal contact damage when close. The weapon system is resource-based, making it easy to add and customize new weapons with different stats, fire rates, and ammo types.
+# Features
 
-Built With
-
-Godot 4 — game engine
-JehenoSimpleFPSWeaponSystem — weapon system addon
-JehenoSimpleFPSController — character controller addon
-Mixamo — enemy character and animations
-Kenney — prototype textures
+* 🎯 Fast-paced first-person shooter gameplay
+* 🔓 Level progression with unlockable levels
+* 📖 Tutorial level to teach game mechanics
+* 🎮 Smooth movement including running, crouching, and jumping
+* 💾 Progress automatically saves between sessions
+* 🖼️ Custom level selection screen with preview images and locked levels 
 
 
-Credits
-Built for Hack Club Stardance by jonwill12.
+### Requirements
+
+* Godot 4.x
+
+
+# How It Works
+
+The game is built entirely in Godot using GDScript.
+
+A save system stores player progress in a `ConfigFile`, allowing completed levels to unlock the next level automatically. The level select menu dynamically creates level cards from a list, making it easy to add new levels without redesigning the UI.
+
+In order to relock the levels, you need to delete the save.cfg
+
+The player controller supports smooth acceleration, bunny hopping, crouching, sprinting, jumping, and air movement to create responsive FPS controls.
+
+---
+
+# Roadmap
+
+* More levels
+* Better enemy AI
+* Weapons and upgrades
+* Boss battles
+* Sound effects and music
+* Additional environments
+
+---
+
+# Credits
+
+Created by **Jonathan  Willner**
+
+Built with:
+
+* Godot Engine
+* GDScript
+
+Thanks to everyone who tested the game and provided feedback! and feal free to give your own feed back 
