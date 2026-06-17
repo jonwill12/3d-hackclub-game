@@ -1,8 +1,8 @@
-# Escape Protocol
+# godot 3d fps 
 
 A fast-paced 3D first-person shooter where players battle through increasingly difficult levels, unlocking new challenges as they progress.
 
-![Gameplay Screenshot](images/gameplay.png)
+i will add more  
 
 > **🎮 Play the game:** *(Add your web demo or download link here)*
 
