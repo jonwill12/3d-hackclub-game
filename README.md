@@ -35,8 +35,11 @@ More levels
 more Weapons and weapon upgrades
 Boss battles
 more Sound effects and music
+
 Credits
 Created by Jonathan Willner
+https://github.com/denizhoroz/3D-FPS-Controller-Template
+https://github.com/RichardBlevins/game
 
 Built with:
 
