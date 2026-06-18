@@ -1,0 +1,309 @@
+[gd_scene format=3 uid="uid://sqw2w0pe8si8"]
+
+[ext_resource type="AudioStream" uid="uid://p6uvqtljqic7" path="res://audio/661248__magmadiverrr__video-game-menu-music.ogg" id="1_h1wq0"]
+[ext_resource type="Shader" uid="uid://bpqwdxdcoqgkl" path="res://scripts/shaders/blur.gdshader" id="2_dwrpx"]
+[ext_resource type="Script" uid="uid://b0dqeiid8nxut" path="res://scripts/ui/menu/options/fullscreen.gd" id="3_g7jxm"]
+[ext_resource type="Script" uid="uid://bn0q5hvti8oos" path="res://scripts/ui/menu/options/mouse_sensitivity.gd" id="4_jspdm"]
+[ext_resource type="Script" uid="uid://bacuksdmu5e7o" path="res://scripts/ui/menu/options/controller_sensitivity.gd" id="5_oxnod"]
+[ext_resource type="Script" uid="uid://btc84h3o001by" path="res://scripts/ui/menu/options/back.gd" id="6_gd0jp"]
+[ext_resource type="Script" uid="uid://dcteuh8jcuba4" path="res://scripts/ui/menu/pause/resume.gd" id="7_4ndjb"]
+[ext_resource type="Script" uid="uid://dm4lm4o7e38y4" path="res://scripts/ui/menu/pause/quit.gd" id="8_3ls4m"]
+[ext_resource type="Script" uid="uid://b8dpk5vhi06pi" path="res://scripts/ui/menu/host_button.gd" id="9_5h80m"]
+[ext_resource type="Script" uid="uid://6fditvx4uhui" path="res://level_selecter_button.gd" id="10_w25hu"]
+[ext_resource type="Script" uid="uid://d3ikdfntb7s4q" path="res://scripts/ui/menu/options_button.gd" id="11_td6mg"]
+
+[sub_resource type="Animation" id="Animation_ug7wi"]
+resource_name = "Dolly"
+length = 120.0
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DollyCamera:position:z")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0.659, -0.25, 0, 0.25, 0, -14.157, -0.25, 0, 0.25, 0, 13.2434, -0.25, 0, 0.25, 0, 0.659, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 30.0667, 89.9333, 120)
+}
+
+[sub_resource type="Animation" id="Animation_ei2s0"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../DollyCamera:position:z")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(13.2434, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lekn2"]
+_data = {
+&"Dolly": SubResource("Animation_ug7wi"),
+&"RESET": SubResource("Animation_ei2s0")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nou27"]
+shader = ExtResource("2_dwrpx")
+shader_parameter/blur_amount = 2.0
+shader_parameter/mix_amount = 0.0
+shader_parameter/color_over = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_utqnk"]
+
+[node name="Menu" type="CanvasLayer" unique_id=1220705289]
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="." unique_id=918360183]
+unique_name_in_owner = true
+stream = ExtResource("1_h1wq0")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1391159140]
+root_node = NodePath("../Blur")
+libraries/ = SubResource("AnimationLibrary_lekn2")
+autoplay = &"Dolly"
+
+[node name="Blur" type="ColorRect" parent="." unique_id=389120209]
+material = SubResource("ShaderMaterial_nou27")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DollyCamera" type="Camera3D" parent="." unique_id=406520712]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0.702964, 13.2434)
+
+[node name="Options" type="PanelContainer" parent="." unique_id=1446699909]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_right = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_utqnk")
+
+[node name="MarginContainer" type="MarginContainer" parent="Options" unique_id=48117528]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Options/MarginContainer" unique_id=450555765]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="OptionsLabel" type="Label" parent="Options/MarginContainer/VBoxContainer" unique_id=1578710305]
+layout_mode = 2
+text = "Options
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Fullscreen" type="CheckButton" parent="Options/MarginContainer/VBoxContainer" unique_id=819759737]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Fullscreen"
+script = ExtResource("3_g7jxm")
+
+[node name="FpsCounter" type="CheckButton" parent="Options/MarginContainer/VBoxContainer" unique_id=1998244585]
+layout_mode = 2
+text = "FPS counter"
+
+[node name="Ping" type="CheckButton" parent="Options/MarginContainer/VBoxContainer" unique_id=19289003]
+layout_mode = 2
+tooltip_text = "Shows connection trip time to host (in milliseconds)"
+text = "View Ping"
+
+[node name="SensitivityLabel" type="Label" parent="Options/MarginContainer/VBoxContainer" unique_id=1231172860]
+layout_mode = 2
+text = "Sensitivity"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/MarginContainer/VBoxContainer" unique_id=1726748074]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options/MarginContainer/VBoxContainer/HBoxContainer" unique_id=8768447]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Mouse sensitivity"
+
+[node name="MouseSensitivity" type="HSlider" parent="Options/MarginContainer/VBoxContainer/HBoxContainer" unique_id=19687292]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 0.001
+max_value = 0.1
+step = 0.001
+value = 0.005
+script = ExtResource("4_jspdm")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Options/MarginContainer/VBoxContainer" unique_id=1705152574]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1234991105]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Controller sensitivity"
+
+[node name="ControllerSensitivity" type="HSlider" parent="Options/MarginContainer/VBoxContainer/HBoxContainer2" unique_id=951724238]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 0.001
+max_value = 0.1
+step = 0.001
+value = 0.009999999999999998
+script = ExtResource("5_oxnod")
+
+[node name="Back" type="Button" parent="Options/MarginContainer/VBoxContainer" unique_id=333401264]
+layout_mode = 2
+text = "Back"
+script = ExtResource("6_gd0jp")
+
+[node name="PauseMenu" type="PanelContainer" parent="." unique_id=589710932]
+visible = false
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_right = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu" unique_id=873590419]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/MarginContainer" unique_id=917031549]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="PauseLabel" type="Label" parent="PauseMenu/MarginContainer/VBoxContainer" unique_id=1445357932]
+layout_mode = 2
+text = "Pause Menu
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Resume" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer" unique_id=1565260398]
+layout_mode = 2
+text = "Resume"
+script = ExtResource("7_4ndjb")
+
+[node name="Options" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer" unique_id=1385950719]
+layout_mode = 2
+text = "Options
+"
+
+[node name="Quit" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer" unique_id=509881135]
+layout_mode = 2
+text = "Quit"
+script = ExtResource("8_3ls4m")
+
+[node name="MainMenu" type="PanelContainer" parent="." unique_id=766267979]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 391.0
+grow_vertical = 2
+theme = SubResource("Theme_utqnk")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu" unique_id=1316694235]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/MarginContainer" unique_id=605940515]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="MainMenuLabel" type="Label" parent="MainMenu/MarginContainer/VBoxContainer" unique_id=116409295]
+layout_mode = 2
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HostButton" type="Button" parent="MainMenu/MarginContainer/VBoxContainer" unique_id=67435157]
+layout_mode = 2
+text = "Host"
+script = ExtResource("9_5h80m")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/MarginContainer/VBoxContainer" unique_id=39792726]
+layout_mode = 2
+
+[node name="AddressEntry" type="LineEdit" parent="MainMenu/MarginContainer/VBoxContainer/HBoxContainer" unique_id=694896607]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Enter Address Here to join"
+alignment = 1
+
+[node name="JoinButton" type="Button" parent="MainMenu/MarginContainer/VBoxContainer/HBoxContainer" unique_id=188527713]
+layout_mode = 2
+text = "  Join  "
+
+[node name="MusicToggle" type="CheckButton" parent="MainMenu" unique_id=106648271]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+button_pressed = true
+text = "Music"
+
+[node name="level selecter button" type="Button" parent="." unique_id=642743493]
+offset_left = 14.0
+offset_top = 385.0
+offset_right = 378.0
+offset_bottom = 416.0
+button_mask = 3
+text = "Levels"
+script = ExtResource("10_w25hu")
+
+[node name="OptionsButton" type="Button" parent="." unique_id=1864727501]
+offset_left = 13.0
+offset_top = 426.0
+offset_right = 378.0
+offset_bottom = 457.0
+toggle_mode = true
+text = "Options"
+script = ExtResource("11_td6mg")
+
+[node name="Quit" type="Button" parent="." unique_id=926518650]
+offset_left = 13.0
+offset_top = 467.0
+offset_right = 378.0
+offset_bottom = 498.0
+text = "Quit"
+script = ExtResource("8_3ls4m")
+
+[connection signal="value_changed" from="Options/MarginContainer/VBoxContainer/HBoxContainer/MouseSensitivity" to="Options/MarginContainer/VBoxContainer/HBoxContainer/MouseSensitivity" method="_on_value_changed"]
+[connection signal="value_changed" from="Options/MarginContainer/VBoxContainer/HBoxContainer2/ControllerSensitivity" to="Options/MarginContainer/VBoxContainer/HBoxContainer2/ControllerSensitivity" method="_on_value_changed"]
+[connection signal="pressed" from="Options/MarginContainer/VBoxContainer/Back" to="PauseMenu/MarginContainer/VBoxContainer/Options" method="_on_back_pressed"]
+[connection signal="pressed" from="Options/MarginContainer/VBoxContainer/Back" to="OptionsButton" method="_on_back_pressed"]
+[connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/HostButton" to="level selecter button" method="_on_host_button_pressed"]
+[connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/HostButton" to="OptionsButton" method="_on_host_button_pressed"]
+[connection signal="pressed" from="MainMenu/MarginContainer/VBoxContainer/HostButton" to="Quit" method="_on_host_button_pressed"]
+[connection signal="toggled" from="OptionsButton" to="Options/MarginContainer/VBoxContainer/Fullscreen" method="_on_options_button_toggled"]

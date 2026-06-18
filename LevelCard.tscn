@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://d1gfjwm76acst"]
+
+[ext_resource type="Texture2D" uid="uid://cjetnt4udxroc" path="res://textures/Level pictures/levlel4ock.png" id="1_dso7j"]
+[ext_resource type="Script" uid="uid://me4nuw8kfhtq" path="res://level_card.gd" id="1_qeyuh"]
+
+[node name="LevelCard" type="Button" unique_id=534859245]
+custom_minimum_size = Vector2(200, 220)
+offset_left = 52.0
+offset_top = 2.0
+offset_right = 252.0
+offset_bottom = 222.0
+scale = Vector2(0.76000005, 0.8)
+script = ExtResource("1_qeyuh")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2098255527]
+layout_mode = 0
+offset_right = 235.0
+offset_bottom = 120.0
+
+[node name="LockIcon" type="TextureRect" parent="." unique_id=1186438224]
+custom_minimum_size = Vector2(200, 120)
+layout_mode = 0
+offset_left = 1.0000038
+offset_right = 312.9403
+offset_bottom = 220.0
+scale = Vector2(0.637, 1.011)
+texture = ExtResource("1_dso7j")
+expand_mode = 3
+stretch_mode = 5

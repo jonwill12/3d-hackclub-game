@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://djoqigno1jqqc"]
+
+[ext_resource type="Script" uid="uid://cjavmpdbmmnu5" path="res://health.gd" id="1_ledv5"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1505981939]
+script = ExtResource("1_ledv5")
+
+[node name="HealthLabel" type="Label" parent="." unique_id=413509136]
+offset_right = 40.0
+offset_bottom = 23.0

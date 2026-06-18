@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://dvtjfoautmx74"]
+
+[ext_resource type="Script" uid="uid://b8dpk5vhi06pi" path="res://scripts/ui/menu/host_button.gd" id="1_fu7sn"]
+[ext_resource type="Script" uid="uid://d3ikdfntb7s4q" path="res://scripts/ui/menu/options_button.gd" id="2_jix8l"]
+[ext_resource type="Script" uid="uid://dm4lm4o7e38y4" path="res://scripts/ui/menu/pause/quit.gd" id="3_glbon"]
+
+[sub_resource type="Theme" id="Theme_utqnk"]
+
+[node name="MainMenu" type="PanelContainer" unique_id=1239680525]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 34.0
+offset_top = 20.0
+offset_right = 425.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme = SubResource("Theme_utqnk")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=363373173]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=290550731]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="MainMenuLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1667962555]
+layout_mode = 2
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HostButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=2022934946]
+layout_mode = 2
+text = "Host"
+script = ExtResource("1_fu7sn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=106290896]
+layout_mode = 2
+
+[node name="AddressEntry" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1930215246]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Enter Address Here to join"
+alignment = 1
+
+[node name="JoinButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=921103078]
+layout_mode = 2
+text = "  Join  "
+
+[node name="OptionsButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=512866073]
+layout_mode = 2
+toggle_mode = true
+text = "Options"
+script = ExtResource("2_jix8l")
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer" unique_id=2054233420]
+layout_mode = 2
+text = "Quit"
+script = ExtResource("3_glbon")
+
+[node name="MusicToggle" type="CheckButton" parent="." unique_id=1812378574]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+button_pressed = true
+text = "Music"

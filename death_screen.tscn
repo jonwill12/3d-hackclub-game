@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://ccsma36bfch4p"]
+
+[ext_resource type="Script" uid="uid://cf17uc6cgqqqn" path="res://canvas_layer.gd" id="1_if853"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=778654235]
+script = ExtResource("1_if853")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1623291159]
+offset_right = 8375.0
+offset_bottom = 7944.0
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=870279816]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="deth" type="Label" parent="VBoxContainer" unique_id=1338272114]
+layout_mode = 2
+text = "YOU DIED"
+
+[node name="SpectateLabel" type="Label" parent="VBoxContainer" unique_id=976283384]
+layout_mode = 2
+text = "Waiting for others"
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=1461308163]
+layout_mode = 2
+button_mask = 3
+text = "Main Menu"

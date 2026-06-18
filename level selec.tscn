@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://d2o67cwe7yk05"]
+
+[ext_resource type="Script" uid="uid://dmdhvkcevl31i" path="res://level_selec.gd" id="1_bahtb"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1406605229]
+script = ExtResource("1_bahtb")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2095599984]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=361789979]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=378841826]
+layout_mode = 2
+text = "Select Level"
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/VBoxContainer" unique_id=116562528]
+layout_mode = 2
+columns = 3
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer" unique_id=282293447]
+layout_mode = 2
+text = "Back"
