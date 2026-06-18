@@ -9,13 +9,16 @@ Play on Desktop
 Download the latest release.
 Extract the files.
 Run godot 3d fps.exe.
+
+
 Features
-🎯 Fast-paced first-person shooter gameplay
-🔓 Level progression with unlockable levels
-📖 Tutorial level to teach game mechanics
-🎮 Smooth movement including running, crouching, and jumping
-💾 Progress automatically saves between sessions
-🖼️ Custom level selection screen with preview images and locked levels
+Fast-paced first-person shooter gameplay
+Level progression with unlockable levels
+Tutorial level to teach game mechanics
+Smooth movement including running, crouching, and jumping
+Progress automatically saves between sessions
+Custom level selection screen with preview images and locked levels
+
 Requirements
 Godot 4.x
 How It Works
