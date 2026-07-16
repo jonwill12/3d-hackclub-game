@@ -1,0 +1,131 @@
+[gd_scene format=3 uid="uid://dnmgejm76jlfi"]
+
+[ext_resource type="Script" uid="uid://d2rr0culpu2jg" path="res://addons/fps-hands/handplayer.gd" id="1_o21vx"]
+[ext_resource type="Script" uid="uid://ba08ylevmfg6i" path="res://addons/fps-hands/fps-hands.gd" id="2_ko6gm"]
+[ext_resource type="Texture2D" uid="uid://bicmyykysdnoq" path="res://addons/fps-hands/crosshair.png" id="3_dympb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lkll4"]
+albedo_color = Color(0.136826, 0.136826, 0.136826, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_o1sdl"]
+size = Vector2(20, 20)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_r821c"]
+points = PackedVector3Array(-10, 0, -10, -10, 0, 10, 10, 0, -10, 10, 0, 10)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rrspg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3dop5"]
+line_spacing = -35.0
+font_size = 64
+
+[sub_resource type="BoxMesh" id="BoxMesh_yml82"]
+size = Vector3(1.295, 2.5, 0.505)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_sdvfw"]
+points = PackedVector3Array(-0.6475, -1.25, -0.2525, -0.6475, -1.25, 0.2525, -0.6475, 1.25, -0.2525, 0.6475, -1.25, -0.2525, 0.6475, -1.25, 0.2525, -0.6475, 1.25, 0.2525, 0.6475, 1.25, -0.2525, 0.6475, 1.25, 0.2525)
+
+[node name="World" type="Node3D" unique_id=256925311]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=535770943]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=380422346]
+transform = Transform3D(0.715256, -0.512636, 0.474987, 7.45058e-09, 0.679657, 0.73353, -0.698862, -0.524662, 0.486129, 0, 2.57164, 0)
+light_intensity_lux = 1.0
+
+[node name="floor" type="StaticBody3D" parent="." unique_id=1743482557]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor" unique_id=1968994614]
+material_override = SubResource("StandardMaterial3D_lkll4")
+mesh = SubResource("PlaneMesh_o1sdl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor" unique_id=805069737]
+shape = SubResource("ConvexPolygonShape3D_r821c")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1532531198]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.00615)
+script = ExtResource("1_o21vx")
+SPEED = 5.0
+MOUSE_SENSITIVITY = 0.1
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=1923194531]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+near = 0.001
+
+[node name="FpsHands" type="Node3D" parent="Player/Camera3D" unique_id=51749921 node_paths=PackedStringArray("camera", "node_recoil_x", "node_recoil_y")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+script = ExtResource("2_ko6gm")
+inventory = {
+"ammo": {
+"9mm": 100,
+"none": 0,
+"rifle": 100,
+"shell": 100
+},
+"weapons": [[0, -1], [1, -1], [2, -1], [3, -1], [4, -1], [5, -1]]
+}
+realistic_reloading = true
+camera = NodePath("..")
+node_recoil_x = NodePath("..")
+node_recoil_y = NodePath("../..")
+sway = false
+sway_look_sens = 62.0
+shake = false
+shake_strength = 0.0
+shake_decay = 0.0
+shake_max_roll = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1173600211]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00025, 0)
+shape = SubResource("CapsuleShape3D_rrspg")
+
+[node name="UI" type="CanvasLayer" parent="Player" unique_id=1813395836]
+
+[node name="AmmoLabel" type="Label" parent="Player/UI" unique_id=397014365]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 243.0
+offset_top = 136.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "0/0
+type"
+label_settings = SubResource("LabelSettings_3dop5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Player/UI" unique_id=142461716]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshair" type="TextureRect" parent="Player/UI/CenterContainer" unique_id=657780607]
+custom_minimum_size = Vector2(2, 2)
+layout_mode = 2
+texture = ExtResource("3_dympb")
+expand_mode = 3
+
+[node name="box" type="RigidBody3D" parent="." unique_id=2136452874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.983252, -1.44633)
+lock_rotation = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="box" unique_id=1095717820]
+mesh = SubResource("BoxMesh_yml82")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="box" unique_id=593701877]
+shape = SubResource("ConvexPolygonShape3D_sdvfw")
+
+[connection signal="aiming" from="Player/Camera3D/FpsHands" to="Player" method="_on_fps_hands_aiming"]
+[connection signal="give_damage" from="Player/Camera3D/FpsHands" to="Player" method="_on_fps_hands_give_damage"]
+[connection signal="update_ammo" from="Player/Camera3D/FpsHands" to="Player" method="_on_fps_hands_update_ammo"]
