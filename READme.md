@@ -1,8 +1,7 @@
 godot 3d fps
 A fast-paced 3D first-person shooter where players battle and there are NPCs idk I lost the plot 
 
-game play video https://youtu.be/ixqJS-LrBXw
-
+game play video https://youtu.be/BNRPgyJlz9c
 🎮 Play the game: https://jonwill12.itch.io/hackclub3dgame
 
 Play on Windows and linux it dosnt work on mac
